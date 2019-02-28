@@ -56,10 +56,12 @@
         var s = document.createElement('script');
         s.setAttribute('src', 'https://connectedhome--zdev.cs86.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() {
+            console.log('null====>');
             initESW(null);
         };
         document.body.appendChild(s);
     } else {
+        console.log('null====>');
         initESW('https://service.force.com');
     }
 </script>
