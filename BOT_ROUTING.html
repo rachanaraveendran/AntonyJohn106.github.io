@@ -32,8 +32,8 @@
         // Settings for Live Agent
         embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
             // sample code to test redirection to different BOTS
-
-            if(prechatFormData[4].value.startsWith("Complex")){
+            console.log('======>'+prechatFormData[4].value);
+            if(prechatFormData[4].value.startsWith("REASON1")){
                return "573200000008Pxr";
             } else {
                 return "5737E00000000v8";
