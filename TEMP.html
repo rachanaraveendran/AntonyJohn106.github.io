@@ -1,11 +1,4 @@
 <html>
-<h1> WELCOME TO A NEW PAGE IN THE SAME DOMAIN</h1>
-
-<a href="https://antonyjohn106.github.io/BOT_ROUTING1.html">Go Back to the previous page</a>
-
-
-
-<body>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -26,7 +19,7 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-                embedded_svc.settings.chatbotAvatarImgURL ='https://antonyjohn106.github.io/hivelogo.jpg';
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -34,18 +27,10 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Live Agent
-		 embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // sample code to test redirection to different BOTS
-            if(prechatFormData[4].value.startsWith("REASON1")){
-               return "573200000008Pxr";
-            } else if(prechatFormData[4].value.startsWith("REASON2")){
-                //return "5737E00000000v8";
-                return "5737E0000008OvQ";
-            } else {
-                return "57320000000TPNM";
-            }
-            
-        };
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
@@ -58,13 +43,13 @@
 			'https://zdev-hive.cs86.force.com/liveagent',
 			gslbBaseURL,
 			'00D7E0000008mdP',
-			'Test_Anto_BOT',
+			'TESTANTO1',
 			{
 				baseLiveAgentContentURL: 'https://c.la1-c1cs-lo2.salesforceliveagent.com/content',
 				deploymentId: '5727E0000004CZG',
-				buttonId: '573200000008Pxn',
+				buttonId: '5737E00000000vX',
 				baseLiveAgentURL: 'https://d.la1-c1cs-lo2.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I7E0000008OKuUAM_168ec0c4ccd',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I7E0000008OLOUA2_16ab84d5fb6',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -81,7 +66,4 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
-</body>
-</html>
-
+<html>
