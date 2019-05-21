@@ -16,6 +16,13 @@
             var initESW = function(gslbBaseURL) {
                 embedded_svc.settings.displayHelpButton = true; //Or false
                 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+                embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+        
+                    var CASE_REASON_PICKLIST = prechatFormData[3];
+                    console.log('JSON ==> ' + JSON.stringify(prechatFormData[3]));
+                    //console.log('Choosen Button -text ' + CASE_REASON_PICKLIST.name + ' = value ==' + CASE_REASON_PICKLIST.value);
+                    return CASE_REASON_PICKLIST.value;
+                };
 
                 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
                 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
