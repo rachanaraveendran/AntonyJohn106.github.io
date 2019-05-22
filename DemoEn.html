@@ -21,7 +21,13 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+		 embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+        
+                    var CASE_REASON_PICKLIST = prechatFormData[3];
+                    console.log('JSON ==> ' + JSON.stringify(prechatFormData[3]));
+                    //console.log('Choosen Button -text ' + CASE_REASON_PICKLIST.name + ' = value ==' + CASE_REASON_PICKLIST.value);
+                    return CASE_REASON_PICKLIST.value;
+                };
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -40,6 +46,86 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		 embedded_svc.settings.extraPrechatFormDetails = 
+        
+                [
+                  
+                  {
+                    "label": "Origin",
+                    "value": "Web Chat - GBR",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                  },
+                  {
+                    "label": "Locale",
+                    "value": "en_GB",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                  }
+                ];
+                
+                
+                embedded_svc.settings.extraPrechatInfo = 
+                [
+                  {
+                    "entityName": "Contact",
+                    "showOnCreate": true,
+                    "linkToEntityName": "Case",
+                    "linkToEntityField": "ContactId",
+                    "saveToTranscript": "Contact",
+                    "entityFieldMaps": [
+                      {
+                        "isExactMatch": true,
+                        "fieldName": "FirstName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "First Name"
+                      },
+                      {
+                        "isExactMatch": true,
+                        "fieldName": "LastName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "Last Name"
+                      },
+                      {
+                        "isExactMatch": true,
+                        "fieldName": "Email",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "Email"
+                      }
+                    ]
+                  },
+                  {
+                    "entityName": "Case",
+                    "showOnCreate": true,
+                    "saveToTranscript": "Case",
+                    "entityFieldMaps": [
+                      {
+                        "isExactMatch": false,
+                        "fieldName": "Subject",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "issue"
+                      },
+                      {
+                        "isExactMatch": false,
+                        "fieldName": "Status",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Status"
+                      }, 
+                      {
+                    "isExactMatch": false,
+                    "fieldName": "Origin",
+                    "doCreate": true,
+                    "doFind": false,
+                    "label": "Origin"
+                  }
+                    ]
+                  }
+                ];
 		embedded_svc.init(
 			'https://connectedhome--zdev.cs86.my.salesforce.com',
 			'https://zdev-hive.cs86.force.com/liveagent',
