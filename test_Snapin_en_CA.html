@@ -15,13 +15,10 @@
             var initESW = function(gslbBaseURL) {
                 embedded_svc.settings.displayHelpButton = true; //Or false
                 embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
-
                 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
                 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
                 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
                 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
                 // Settings for Chat
                 embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
                     var CASE_REASON_PICKLIST = prechatFormData[3].value;
@@ -42,6 +39,12 @@
                 {
                     "label": "Origin",
                     "value": "Web Chat - CAN",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                },
+                {
+                    "label": "locale",
+                    "value": "en_CA",
                     "transcriptFields": [],
                     "displayToAgent": true
                 }
@@ -105,6 +108,20 @@
                         "doCreate": true,
                         "doFind": false,
                         "label": "Origin"
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "locale__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "locale",
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "Product",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Product"
                     }
                     ]
                 }
@@ -125,7 +142,6 @@
                     }
                 );
             };
-
             if (!window.embedded_svc) {
                 var s = document.createElement('script');
                 s.setAttribute('src', 'https://connectedhome--test.cs105.my.salesforce.com/embeddedservice/5.0/esw.min.js');
