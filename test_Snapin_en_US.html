@@ -53,6 +53,12 @@
                     "value": "en_US",
                     "transcriptFields": [],
                     "displayToAgent": true
+                },
+                {
+                    "label": "CurrencyIsoCode",
+                    "value": "USD",
+                    "transcriptFields": [],
+                    "displayToAgent": true
                 }
                 ];
                 
@@ -108,9 +114,17 @@
                         "doFind": false,
                         "label": "locale",
                     },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "CurrencyIsoCode",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "CurrencyIsoCode",
+                    }
+
                     ]
                 }
-                ];  
+                ];
                 embedded_svc.init(
                     'https://connectedhome--test.cs105.my.salesforce.com',
                     'https://test-hive.cs105.force.com/liveagent',

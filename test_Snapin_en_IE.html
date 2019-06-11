@@ -44,13 +44,19 @@
                 [
                 {
                     "label": "Origin",
-                    "value": "Web Chat - GBR",
+                    "value": "Web Chat - IRL",
                     "transcriptFields": [],
                     "displayToAgent": true
                 },
                 {
                     "label": "locale",
                     "value": "en_IE",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                },
+                {
+                    "label": "CurrencyIsoCode",
+                    "value": "EUR",
                     "transcriptFields": [],
                     "displayToAgent": true
                 }
@@ -108,9 +114,17 @@
                         "doFind": false,
                         "label": "locale",
                     },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "CurrencyIsoCode",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "CurrencyIsoCode",
+                    }
+
                     ]
                 }
-                ];        
+                ];       
                 embedded_svc.init(
                     'https://connectedhome--test.cs105.my.salesforce.com',
                     'https://test-hive.cs105.force.com/liveagent',
