@@ -16,22 +16,25 @@
                 embedded_svc.settings.displayHelpButton = true; //Or false
                 embedded_svc.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
         
-                //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-                //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-        
+                embedded_svc.settings.defaultMinimizedText = 'Chat with Hive Helper'; //(Defaults to Chat with an Expert)
+                embedded_svc.settings.disabledMinimizedText = 'No Hive Agent'; //(Defaults to Agent Offline)
+
                 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
                 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-        
+
                 // Settings for Chat
                 embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-                    var CASE_REASON_PICKLIST = prechatFormData[3].value;
-                    var SEPARATOR = '_';
-                    //fetch the case reason and the button ID from the selected case reason's value, split by the separator "_"
-                    var buttonId  = CASE_REASON_PICKLIST.substring(CASE_REASON_PICKLIST.indexOf(SEPARATOR)+1);
-                    var casereason = CASE_REASON_PICKLIST.substring(0,CASE_REASON_PICKLIST.indexOf(SEPARATOR));
-                    prechatFormData[3].value = casereason;
+                    var buttonId = '';
+                    //This is set in helper of the Prechat Lightning component
+                    var BTN_ID_LABEL = 'Snapins Button Routing ID'; 
+                    for (i=0; i<prechatFormData.length; i++) {
+                        if (prechatFormData[i].label == BTN_ID_LABEL) {
+                            buttonId = prechatFormData[i].value;
+                        }
+                    }       
                     return buttonId;
                 };
+
                 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
                 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
                 //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
@@ -90,21 +93,7 @@
                     "entityName": "Case",
                     "showOnCreate": true,
                     "saveToTranscript": "Case",
-                    "entityFieldMaps": [
-                    {
-                        "isExactMatch": false,
-                        "fieldName": "Subject",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "issue"
-                    },
-                    {
-                        "isExactMatch": false,
-                        "fieldName": "Status",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Status"
-                    }, 
+                    "entityFieldMaps": [                 
                     {
                         "isExactMatch": false,
                         "fieldName": "Origin",
@@ -119,13 +108,6 @@
                         "doFind": false,
                         "label": "locale",
                     },
-                    {
-                        "isExactMatch": false,
-                        "fieldName": "Product",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Product"
-                    }
                     ]
                 }
                 ]; 
