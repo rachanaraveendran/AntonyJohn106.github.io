@@ -38,6 +38,7 @@
                     }       
                     return buttonId;
                 };
+		embedded_svc.settings.externalScripts = ["CustomEvents_fromAgentToCustomer"];
                 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
                 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
                 //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
@@ -115,8 +116,7 @@
                 }
                 ];
 
-               embedded_svc.liveAgentAPI.addCustomEventListener("agent_to_customer_event_type", customEventReceived);
-
+               
 
 		embedded_svc.init(
 			'https://connectedhome--zdev.cs86.my.salesforce.com',
@@ -135,19 +135,7 @@
 		);
 	};
 	
-	function customEventReceived(result) {
-		var eventType;
-		var eventData;
-
-		if (!result || !result.success) {
-			console.log("customEventReceived failed");
-			return;
-		}
-
-		eventType = result.type;
-		eventData = JSON.stringify(result.data);
-		console.log("A custom event of type '" + eventType + "' has been received with the following data: " + eventData);
-	}
+	
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
