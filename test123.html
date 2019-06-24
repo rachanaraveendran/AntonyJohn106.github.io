@@ -30,9 +30,105 @@
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+   		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+                embedded_svc.settings.entryFeature = 'LiveAgent';
+                embedded_svc.settings.extraPrechatFormDetails = 
+                [
+                {
+                    "label": "Origin",
+                    "value": "Web Chat - ITA",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                },
+                {
+                    "label": "locale",
+                    "value": "it_IT",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                },
+                {
+                    "label": "CurrencyIsoCode",
+                    "value": "EUR",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                },
+                {
+                    "label": "Reason",
+                    "value": "Cannn ",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }
+                ];
+                
+                
+                embedded_svc.settings.extraPrechatInfo = 
+                [
+                {
+                    "entityName": "Contact",
+                    "showOnCreate": true,
+                    "linkToEntityName": "Case",
+                    "linkToEntityField": "ContactId",
+                    "saveToTranscript": "Contact",
+                    "entityFieldMaps": [
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "FirstName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "First Name"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "LastName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "Last Name"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "Email",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "Email"
+                    }
+                    ]
+                },
+                {
+                    "entityName": "Case",
+                    "showOnCreate": true,
+                    "saveToTranscript": "Case",
+                    "entityFieldMaps": [
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "Origin",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Origin"
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "locale__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "locale",
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "CurrencyIsoCode",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "CurrencyIsoCode",
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "Reason",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Reason",
+                    }
+                    ]
+                }
+                ];
 		embedded_svc.init(
 			'https://connectedhome--test.cs105.my.salesforce.com',
 			'https://test-hive.cs105.force.com/liveagent',
