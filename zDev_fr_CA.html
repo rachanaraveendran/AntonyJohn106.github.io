@@ -29,12 +29,14 @@
 
                 // Settings for Live Agent
                 embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-                    var CASE_REASON_PICKLIST = prechatFormData[3].value;
-                    var SEPARATOR = '_';
-                    //fetch the case reason and the button ID from the selected case reason's value, split by the separator "_"
-                    var buttonId  = CASE_REASON_PICKLIST.substring(CASE_REASON_PICKLIST.indexOf(SEPARATOR)+1);
-                    var casereason = CASE_REASON_PICKLIST.substring(0,CASE_REASON_PICKLIST.indexOf(SEPARATOR));
-                    prechatFormData[3].value = casereason;
+                    var buttonId = '';
+                    //This is set in helper of the Prechat Lightning component
+                    var BTN_ID_LABEL = 'Snapins Button Routing ID'; 
+                    for (i=0; i<prechatFormData.length; i++) {
+                        if (prechatFormData[i].label == BTN_ID_LABEL) {
+                            buttonId = prechatFormData[i].value;
+                        }
+                    }       
                     return buttonId;
                 };
                 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
