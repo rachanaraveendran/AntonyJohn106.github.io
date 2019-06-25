@@ -35,12 +35,8 @@
                         if (prechatFormData[i].label == BTN_ID_LABEL) {
                             buttonId = prechatFormData[i].value;
                         }
-                         
                         if (prechatFormData[i].label == 'Subject') {
                             prechatFormData[i].label = 'Oggetto';
-                        }
-                        if (prechatFormData[i].label == 'Case Reason') {
-                            prechatFormData[i].label = 'Reason';
                         }
                     }    
                     console.log("after all ===>" + JSON.stringify(prechatFormData, null, 1));
