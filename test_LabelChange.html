@@ -76,7 +76,13 @@
                     "value": "XXXX",
                     "transcriptFields": [],
                     "displayToAgent": true
-                }      
+                },
+                {
+                    "label": "Reason",
+                    "value": "Cancellation",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }   
                 ];
                 
                 
@@ -144,7 +150,14 @@
                         "doCreate": true,
                         "doFind": false,
                         "label": "Subject",
-                    }    
+                    } ,
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "Reason",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Reason",
+                    }   
                         
                     ]
                 }
