@@ -35,10 +35,7 @@
                         if (prechatFormData[i].label == BTN_ID_LABEL) {
                             buttonId = prechatFormData[i].value;
                         }
-                        if (prechatFormData[i].name == 'Reason') {
-                            prechatFormData[i].value = 'Cancellation';
-                            prechatFormData[i].label = 'Reason';
-                        }
+                      
                        
                     }    
                     console.log("after all ===>" + JSON.stringify(prechatFormData, null, 1));
@@ -71,18 +68,7 @@
                     "transcriptFields": [],
                     "displayToAgent": true
                 } ,
-                {
-                    "label": "Subject",
-                    "value": "XXXX",
-                    "transcriptFields": [],
-                    "displayToAgent": true
-                },
-                {
-                    "label": "Reason",
-                    "value": "Cancellation",
-                    "transcriptFields": [],
-                    "displayToAgent": true
-                }   
+             
                 ];
                 
                 
@@ -144,20 +130,7 @@
                         "doFind": false,
                         "label": "CurrencyIsoCode",
                     },
-                     {
-                        "isExactMatch": false,
-                        "fieldName": "Subject",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Subject",
-                    } ,
-                    {
-                        "isExactMatch": false,
-                        "fieldName": "Reason",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Reason",
-                    }   
+                  
                         
                     ]
                 }
