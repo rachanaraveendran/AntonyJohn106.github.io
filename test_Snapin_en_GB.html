@@ -54,7 +54,8 @@
                         if (prechatFormData[i].label == BTN_ID_LABEL) {
                             buttonId = prechatFormData[i].value;
                         }
-                    }       
+                    }
+                    console.log('PrechatFormdata' + JSON.Stringify(prechatFormData, null, 1));
                     return buttonId;
                 };
                 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
